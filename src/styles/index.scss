@@ -1,0 +1,380 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+/*.pagination-container {
+  margin-top: 30px;
+}*/
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+.font-icon{
+  color: #148be5;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.font-deldet{
+  color: #f56c6c;
+}
+//tree style
+.tree-style{
+  padding: 10px 5px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  background: #fff;
+}
+.el-tree{
+  width: 100%;
+  height: 100%;
+  overflow-x: scroll;
+}
+.el-tree>.el-tree-node{
+  display: inline-block !important;
+}
+.from-serach{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.pagination{
+  position: fixed;
+  bottom: 18px;
+}
+.heightmax{
+  height: 100%;
+}
+//分页样式
+.el-pagination.is-background .el-pager li:not(.disabled).active{
+  background-color: $green;
+}
+//下拉框样式
+.el-input--medium .el-input__inner,.el-input--medium .el-input__icon{
+  height: 32px;
+  line-height: 32px;
+}
+//搜索
+.serach{
+  display: flex;
+  >div{
+    margin-right: 10px;
+    .from-serach{
+      background-color: $green;
+      color: #fff;
+      border: 1px solid $green;
+      margin-bottom: 0;
+    }
+  }
+}
+//表单详情样式
+.dialog_tab .el-dialog__body{
+  padding-top: 0;
+}
+
+.form_Department_main .el-dialog__body{
+  padding: 0;//选人选部门
+}
+
+.details-height{
+  border: 1px solid $borderAsh;
+  border-bottom: none;
+  margin-bottom: 15px;
+  .details-form{
+    display: flex;
+    border-bottom: 1px solid $borderAsh;
+    >div{
+      flex: 1;
+      display: flex;
+      font-size: 14px;
+      border-right: 1px solid $borderAsh;
+      line-height: 20px;
+      >label{
+        color: #666;
+        border-right: 1px solid $borderAsh;
+        font-weight: normal;
+        flex:  0 0 105px;
+        padding: 7px 10px;
+        display: flex;
+        align-items: center;
+      }
+      >span{
+        color: #2d2d2d;
+        flex: 1;
+        padding: 7px 10px;
+        display: flex;
+        align-items: center;
+      }
+      pre{
+        color: #2d2d2d;
+        font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+        margin: 0;
+      }
+    }
+    >div:last-child{
+      border-right: none;
+    }
+  }
+  .el-tabs__header{
+    margin-bottom: 0;
+  }
+  .el-tabs__nav-wrap{
+    padding-left: 10px;
+  }
+  .from-title{
+    background-color: #f5f5f5;
+    padding: 5px;
+    color: #343434;
+  }
+}
+.nodata{
+  text-align: center;
+}
+//详情
+.dialog_cont {
+  height: 100%;
+}
+
+//输入框搜索样式
+.el-autocomplete-suggestion  {
+  li {
+    line-height: normal;
+    padding: 7px;
+
+    .name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .addr {
+      font-size: 12px;
+      color: #b4b4b4;
+    }
+
+    .highlighted .addr {
+      color: #ddd;
+    }
+
+  }
+}
+
+/*表格高度*/
+.global_table_box {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 42px);
+
+  .global_table_content {
+    flex: 1;
+    height: calc(100% - 39px);
+  }
+}
+//地图搜索框样式
+.tangram-suggestion {
+  z-index: 9999;
+}
+
+/*列表选项卡tabs样式*/
+.global_table_content{
+  .el-tabs{
+    height: 100%;
+    .el-tabs__item{
+      height: 35px;
+      line-height: 35px;
+    }
+    .el-tabs__header{
+      margin-bottom: 10px;
+    }
+    .el-tabs__content{
+      height: calc(100% - 46px);
+      overflow-y: auto;
+    }
+  }
+}
+
+/*表单不显示label*/
+.no_label .el-form-item__content{
+  margin-left: 0 !important;
+}
