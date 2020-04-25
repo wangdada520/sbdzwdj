@@ -38,6 +38,7 @@
             <el-table-column align="left" prop="usecaseTitle" label="用例标题" :show-overflow-tooltip="true" />
             <el-table-column align="left" prop="mappingUrl" label="api映射路径" :show-overflow-tooltip="true" />
             <el-table-column align="left" prop="usecaseDesc" label="用例描述" :show-overflow-tooltip="true" />
+            <el-table-column align="left" prop="caseType" label="用例类型" :show-overflow-tooltip="true" />
           </el-table>
           <div class="pagination">
             <pagination

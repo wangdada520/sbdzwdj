@@ -32,9 +32,9 @@
         @row-dblclick="showdetails"
       >
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
-          width="80px"
+          width="100px"
           label="工作编号"
           :show-overflow-tooltip="true"
         />
@@ -49,12 +49,12 @@
         <el-table-column
           align="center"
           prop="vlmVisitTime"
-          width="200"
+          width="100px"
           label="回访日期"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="vlmVisitor"
           width="200"
           label="回访人"
@@ -68,16 +68,16 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="vlmSituationDescription"
           width="200"
           label="情况说明"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
-          prop="vlmSatisfaction_Degree"
-          width="200"
+          align="left"
+          prop="vlmSatisfactionDegreeStr"
+          width="100px"
           label="满意度"
           :show-overflow-tooltip="true"
         />
@@ -132,6 +132,24 @@ export default {
       form: {}
     }
   },
+  watch: {
+    vlmVisitor(val) {
+      if (val.trim() === '') {
+        delete this.search.vlmVisitor
+        this.getList()
+      } else {
+        this.search.vlmVisitor = this.vlmVisitor
+      }
+    },
+    taskName(val) {
+      if (val.trim() === '') {
+        delete this.search.taskName
+        this.getList()
+      } else {
+        this.search.taskName = this.taskName
+      }
+    }
+  },
   created() {
     this.getList()
   },
@@ -158,6 +176,9 @@ export default {
     },
     showdetails(row) {
       this.form = Object.assign({}, row)
+      row.vlmSatisfactionDegree === '2'
+        ? (this.form.isvlmSatisfactionDegree = true)
+        : (this.form.isvlmSatisfactionDegree = false)
       this.$nextTick(() => {
         this.hackDetails = true
         setTimeout(() => {

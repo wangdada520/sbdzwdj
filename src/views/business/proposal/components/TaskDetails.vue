@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="details_title">
-      <h1>{{ details.taskName }}</h1>
+      <h1 @click="rowdblClick()">{{ details.taskName }}</h1>
     </div>
     <div class="details-height">
       <div class="details-form">
@@ -25,13 +25,19 @@
         </div>
       </div>
     </div>
+    <!--详情-->
+    <Details v-if="hackDetails" ref="childenDetails" :taskid="taskid" @closed="closed" />
   </div>
 </template>
 
 <script>
 import { gettaskRecordDetail } from '@/views/business/api/JobAssignment'
+import Details from './AllDetails'
 export default {
   name: 'TaskDetails',
+  components: {
+    Details
+  },
   props: {
     taskid: {
       type: [String, Number],
@@ -40,6 +46,7 @@ export default {
   },
   data() {
     return {
+      hackDetails: false,
       details: {} // 任务详情
     }
   },
@@ -47,6 +54,9 @@ export default {
     this.getDetail(this.taskid)
   },
   methods: {
+    closed() {
+      this.hackDetails = false
+    },
     /**
      * 获取任务详情
      * */
@@ -59,6 +69,17 @@ export default {
           this.details = res.data.taskRecord
         }
       }).catch(() => {
+      })
+    },
+    /**
+     * 打开详情
+     * */
+    rowdblClick() {
+      this.$nextTick(() => {
+        this.hackDetails = true
+        setTimeout(() => {
+          this.$refs.childenDetails.centerDialogVisible = true
+        }, 0)
       })
     }
   }

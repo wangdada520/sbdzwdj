@@ -25,3 +25,12 @@ export function addworkPlan(data) {
     data
   })
 }
+
+// 修改工作计划
+export function putworkPlan(id, data) {
+  return request({
+    url: `/api-zwdj-business/work/workPlan/${id}`,
+    method: 'put',
+    data
+  })
+}

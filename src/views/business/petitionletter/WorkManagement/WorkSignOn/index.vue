@@ -38,7 +38,7 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
           width="80px"
           label="工作编号"
@@ -67,16 +67,16 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="left"
+          align="center"
           prop="endTime"
-          width="200"
+          width="100px"
           label="办结时限"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="center"
           prop="handTime"
-          width="200"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />

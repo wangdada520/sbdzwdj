@@ -84,14 +84,14 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="monthWeek"
           width="200"
           label="汇报周期"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
           width="100px"
           label="进展状态"
@@ -99,14 +99,14 @@
         />
         <el-table-column align="left" prop="content" label="推进情况" :show-overflow-tooltip="true" />
         <el-table-column
-          align="center"
+          align="left"
           prop="problem"
           width="200"
           label="存在问题"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
@@ -222,7 +222,11 @@ export default {
     cx() {
       this.$refs.searchDetails.dialogVisible = true
     },
-    serachFn() {},
+    getTimeValue(val) {
+      this.reportTime = val
+      this.search.reportTime = this.reportTime
+      this.getList()
+    },
     handleCurrentChange(val) {
       this.pages.pageNum = val
       this.getList()

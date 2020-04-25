@@ -17,7 +17,9 @@
           <!-- 表单组件 -->
           <FormDetalis ref="childRules" :formdetali="form" />
         </el-tab-pane>
-        <el-tab-pane label="上报记录" name="second">上报记录</el-tab-pane>
+        <el-tab-pane label="上报记录" name="second">
+          <ReportLog />
+        </el-tab-pane>
       </el-tabs>
       <DialogFooter slot="footer" cancelbut="取消" @handleOk="handleOk" @handleNo="handleNo" />
     </el-dialog>
@@ -26,12 +28,14 @@
 
 <script>
 import FormDetalis from '../components/formdetalis'
+import ReportLog from '../components/ReportLog'
 import TableHeader from '@/views/business/Instructions/components/TableHeader'
 import { putTaskReport } from '@/views/business/api/WorkReport'
 export default {
   components: {
     FormDetalis,
-    TableHeader
+    TableHeader,
+    ReportLog
   },
   props: {
     title: {

@@ -179,9 +179,6 @@ export default {
   watch: {
     dictValueFour(val) {
       this.proposalCircles = ''
-      this.search = {
-        type: 5
-      }
       if (val === '') {
         delete this.search.dictValueFour
       } else {
@@ -196,9 +193,6 @@ export default {
       this.getList()
     },
     proposalCircles(val) {
-      this.search = {
-        type: 5
-      }
       if (val === '') {
         delete this.search.proposalCircles
       } else {
@@ -207,9 +201,6 @@ export default {
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        type: 5
-      }
       if (val === '') {
         delete this.search.taskName
       } else {
@@ -217,9 +208,6 @@ export default {
       }
     },
     reportDeptName(val) {
-      this.search = {
-        type: 5
-      }
       if (val === '') {
         delete this.search.reportDeptName
       } else {

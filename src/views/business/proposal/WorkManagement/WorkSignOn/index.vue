@@ -203,12 +203,12 @@ export default {
     dictValueFour(val) {
       this.proposalCircles = ''
       this.proposalSecond = ''
-      this.search = {
-        status: 0,
-        type: 5
-      }
       if (val === '') {
         delete this.search.dictValueFour
+        this.search = {
+          status: 0,
+          type: 5
+        }
       } else {
         this.search.dictValueFour = val
       }
@@ -223,36 +223,36 @@ export default {
       this.getList()
     },
     proposalCircles(val) {
-      this.search = {
-        status: 0,
-        type: 5
-      }
       if (val === '') {
         delete this.search.proposalCircles
+        this.search = {
+          status: 0,
+          type: 5
+        }
       } else {
         this.search.proposalCircles = val
       }
       this.getList()
     },
     proposalSecond(val) {
-      this.search = {
-        status: 0,
-        type: 5
-      }
       if (val === '') {
         delete this.search.proposalSecond
+        this.search = {
+          status: 0,
+          type: 5
+        }
       } else {
         this.search.proposalSecond = val
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: 0,
-        type: 5
-      }
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: 0,
+          type: 5
+        }
       } else {
         this.search.taskName = val
       }

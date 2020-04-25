@@ -26,13 +26,17 @@
     <div class="details-form">
       <div>
         <label>工作目标内容</label>
-        <span>{{ detail.taskContent }}</span>
+        <span>
+          <pre>{{ detail.taskContent }}</pre>
+        </span>
       </div>
     </div>
     <div class="details-form">
       <div>
         <label>督办要求</label>
-        <span>{{ detail.dbAskcontent }}</span>
+        <span>
+          <pre>{{ detail.dbAskcontent }}</pre>
+        </span>
       </div>
     </div>
     <div class="details-form">

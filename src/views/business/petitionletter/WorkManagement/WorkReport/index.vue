@@ -58,14 +58,14 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="beyondTypeStr"
           width="80px"
           label="预警灯"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
           width="80px"
           label="工作编号"
@@ -87,30 +87,30 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="left"
+          align="center"
           prop="handTime"
-          width="200"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="left"
+          align="center"
           prop="endTime"
-          width="200"
+          width="100px"
           label="办结时限"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="center"
           prop="reportEndTime"
-          width="200"
+          width="100px"
           label="汇报时限"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="cycleStr"
-          width="200"
+          width="150px"
           label="督办频次"
           :show-overflow-tooltip="true"
         />
@@ -122,9 +122,9 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="reportStatusStr"
-          width="200"
+          width="100px"
           label="状态"
           :show-overflow-tooltip="true"
         />
@@ -147,7 +147,6 @@
 
 <script>
 import Details from './model/detalis'
-// import { uniqueArr } from '@/utils/index'
 import { getTaskReportList } from '@/views/business/api/WorkReport'
 import { getByDictCode } from '@/api/Common'
 export default {
@@ -199,6 +198,10 @@ export default {
     status(val) {
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -1,
+          type: 3
+        }
       } else {
         this.search.status = this.status
       }
@@ -207,6 +210,10 @@ export default {
     beyondType(val) {
       if (val === '') {
         delete this.search.beyondType
+        this.search = {
+          status: -1,
+          type: 3
+        }
       } else {
         this.search.beyondType = this.beyondType
       }
@@ -215,6 +222,10 @@ export default {
     dictValueTwo(val) {
       if (val === '') {
         delete this.search.dictValueTwo
+        this.search = {
+          status: -1,
+          type: 3
+        }
       } else {
         this.search.dictValueTwo = val
       }
@@ -223,6 +234,10 @@ export default {
     taskName(val) {
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: -1,
+          type: 3
+        }
       } else {
         this.search.taskName = val
       }

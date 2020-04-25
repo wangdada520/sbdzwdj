@@ -29,7 +29,7 @@
       <el-row type="flex" class="row-bg" justify="space-between">
         <el-col :span="11">
           <el-form-item label="进展认定" prop="progress">
-            <el-select v-model="form.progress" placeholder="请选择">
+            <el-select v-model="form.progress" placeholder="请选择" @change="progressChange">
               <el-option
                 v-for="item in options1"
                 :key="item.value"
@@ -47,9 +47,11 @@
       </el-row>
       <el-row type="flex" class="row-bg" justify="space-between">
         <el-col :span="11">
-          <el-form-item label="完成时限" prop="endTime">
-            <Times :model-value="form.endTime" @getTimeValue="getendTime" />
-          </el-form-item>
+          <template v-if="showTime">
+            <el-form-item label="完成时限" prop="endTime">
+              <Times :model-value="form.endTime" @getTimeValue="getendTime" />
+            </el-form-item>
+          </template>
         </el-col>
         <el-col :span="11">
           <el-form-item label="完成进度" prop="percent">
@@ -155,6 +157,7 @@ export default {
       oldform: {},
       options1: [],
       showUser: false,
+      showTime: true,
       rules: {
         progress: [
           { required: true, message: '请选择进展认定', trigger: 'change' }
@@ -225,6 +228,14 @@ export default {
         this.form.userIds.push(item.userId)
       })
       this.form.userIds = this.form.userIds.join(',')
+    },
+    progressChange(val) {
+      if (val === '3') {
+        console.log(111)
+        this.showTime = false
+      } else {
+        this.showTime = true
+      }
     },
     // 校验数据
     validateForm() {

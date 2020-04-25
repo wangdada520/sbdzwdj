@@ -44,19 +44,25 @@
       <div class="details-form">
         <div>
           <label>推进情况</label>
-          <span>{{ details.content }}</span>
+          <span>
+            <pre>{{ details.content }}</pre>
+          </span>
         </div>
       </div>
       <div class="details-form">
         <div>
           <label>存在问题</label>
-          <span>{{ details.problem }}</span>
+          <span>
+            <pre>{{ details.problem }}</pre>
+          </span>
         </div>
       </div>
       <div class="details-form">
         <div>
           <label>下步计划</label>
-          <span>{{ details.plan }}</span>
+          <span>
+            <pre>{{ details.plan }}</pre>
+          </span>
         </div>
       </div>
     </div>

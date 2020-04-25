@@ -88,9 +88,9 @@
               >
                 <el-option
                   v-for="item in options5"
-                  :key="item.meetId"
-                  :label="item.meetName"
-                  :value="item.meetId"
+                  :key="item.meeting.meetId"
+                  :label="item.meeting.meetName"
+                  :value="item.meeting.meetId"
                 />
               </el-select>
             </el-form-item>
@@ -186,7 +186,7 @@
                 required: true, message: '请选择分管领导', trigger: 'blur'
               }"
             >
-              <ChoiceUser identification="type02" :setselection="setselection02" @returnData="returnData" />
+              <ChoiceUser identification="type02" flag="1" :setselection="setselection02" @returnData="returnData" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -331,7 +331,7 @@
 </template>
 <script>
 import { addtaskRecordsaveTask, gettaskRecordDetail } from '@/views/business/api/JobAssignment'
-import { gettaskMeetinglist } from '@/views/business/api/ManagementMeetings'
+import { gettaskMeetinglist, gettaskRelationshipPeoplelist } from '@/views/business/api/ManagementMeetings'
 import { getByDictCode } from '@/api/Common'
 import { parseTime } from '@/utils/index'
 import { getUserName, getDepartmentName } from '@/utils/auth'
@@ -381,6 +381,7 @@ export default {
       type03: [],
       type04: [],
       type05: [],
+      type06: [], // 会议召开人
       setselection01: '',
       setselection02: '',
       setselection03: '',
@@ -470,7 +471,7 @@ export default {
            * 整合选择的人和单位
            * */
           this.thisform.taskRecord['status'] = status || '0'
-          this.thisform.peoples = this.type01.concat(this.type02).concat(this.type03).concat(this.type04).concat(this.type05) || []
+          this.thisform.peoples = this.type01.concat(this.type02).concat(this.type03).concat(this.type04).concat(this.type05).concat(this.type06) || []
           this.loading = this.$loading()
           addtaskRecordsaveTask(this.thisform).then((res) => {
             this.submitForm(type, res)
@@ -512,29 +513,74 @@ export default {
       const move = this.thisform.taskRecord
       switch (type) {
         case '1':
-          this.getByDictCode(move.dictValueTwo, 'options3')
+          if (move.dictValueTwo) {
+            this.getByDictCode(move.dictValueTwo, 'options3')
+          }
           move.dictValueThree = ''
           move.serviceId = ''
           this.beginUser = ''
           this.beginTime = ''
           break
         case '2':
-          this.gettaskMeetinglist(move.dictValueTwo, move.dictValueThree)
+          if (move.dictValueTwo && move.dictValueThree) {
+            this.gettaskMeetinglist(move.dictValueTwo, move.dictValueThree)
+          }
           move.serviceId = ''
           this.beginUser = ''
           this.beginTime = ''
           break
         case '3':
           this.options5.map(item => {
-            if (move.serviceId === item.meetId) {
-              move.reportAsk = item.meetName
-              this.beginTime = item.beginTime
+            if (move.serviceId === item.meeting.meetId) {
+              move.reportAsk = item.meeting.meetName
+              this.beginTime = item.meeting.beginTime
+              this.beginUser = item.meeting.people4
+              this['type06'] = []
+              const taskId = this.thisform.taskRecord.taskId || ''
+              item.peoples.map(items => {
+                this['type06'].push({
+                  rpUserType: '4',
+                  type: '0',
+                  taskId: taskId,
+                  rpUserId: items.rpUserId,
+                  rpUserName: items.rpUserName
+                })
+              })
             }
           })
           break
         default:
           return false
       }
+    },
+    /**
+     * 获取任务相关人列表
+     * */
+    gettaskRelationshipPeoplelist(id) {
+      const params = {
+        pageNum: 1,
+        pageSize: 100,
+        search: {
+          taskId: id
+        }
+      }
+      gettaskRelationshipPeoplelist(params).then((res) => {
+        if (res.code === 200) {
+          this['type06'] = []
+          const taskId = this.thisform.taskRecord.taskId || ''
+          this['beginUser'] = res.data.map(item => item.rpUserName).join(',')
+          res.data.map(item => {
+            this['type06'].push({
+              rpUserType: '4',
+              type: '0',
+              taskId: taskId,
+              rpUserId: item.rpUserId,
+              rpUserName: item.rpUserName
+            })
+          })
+        }
+      }).catch(() => {
+      })
     },
     /**
      * 获取会议列表

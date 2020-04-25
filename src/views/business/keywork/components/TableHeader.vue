@@ -15,19 +15,19 @@
       <div class="details-form">
         <div>
           <label>当前节点</label>
-          <span>{{ details.taskContent }}</span>
+          <span><pre>{{ details.taskContent }}</pre></span>
         </div>
       </div>
       <div class="details-form">
         <div>
           <label>督办要求</label>
-          <span>{{ details.dbAskcontent }}</span>
+          <span><pre>{{ details.dbAskcontent }}</pre></span>
         </div>
       </div>
       <div class="details-form">
         <div>
           <label>当前计划</label>
-          <span>{{ details.dbAskcontent }}</span>
+          <span><pre>{{ details.dbAskcontent }}</pre></span>
         </div>
       </div>
     </div>

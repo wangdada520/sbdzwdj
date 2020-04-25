@@ -5,24 +5,24 @@
       <el-row type="flex" class="row-bg" justify="space-between">
         <el-col :span="11">
           <el-form-item label="汇报单位">
-            <el-input v-model="form.deptName" disabled />
+            <el-input v-model="form.deptName" />
           </el-form-item>
         </el-col>
         <el-col :span="11">
           <el-form-item label="汇报时限">
-            <Times :model-value="form.reportEndTime" :disabled="true" />
+            <Times :model-value="form.reportEndTime" />
           </el-form-item>
         </el-col>
       </el-row>
       <el-row type="flex" class="row-bg" justify="space-between">
         <el-col :span="11">
           <el-form-item label="汇报人">
-            <el-input v-model="form.userName" disabled />
+            <el-input v-model="form.userName" />
           </el-form-item>
         </el-col>
         <el-col :span="11">
           <el-form-item label="联系电话">
-            <el-input v-model="form.phone" disabled />
+            <el-input v-model="form.phone" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -41,7 +41,7 @@
         </el-col>
         <el-col :span="11">
           <el-form-item label="预警状态">
-            <el-input v-model="form.beyondTypeStr" disabled />
+            <el-input v-model="form.beyondTypeStr" />
           </el-form-item>
         </el-col>
       </el-row>

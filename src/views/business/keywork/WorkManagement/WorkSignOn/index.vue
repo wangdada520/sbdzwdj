@@ -31,7 +31,6 @@
           align="left"
           prop="taskName"
           label="工作名称"
-          width="150"
           :show-overflow-tooltip="true"
         />
         <el-table-column
@@ -43,7 +42,7 @@
         <el-table-column
           align="left"
           prop="people2"
-          width="200"
+          width="150px"
           label="分管领导"
           :show-overflow-tooltip="true"
         />
@@ -57,7 +56,7 @@
         <el-table-column
           align="left"
           prop="acceptTypeStr"
-          width="200"
+          width="150px"
           label="责任类型"
           :show-overflow-tooltip="true"
         />
@@ -71,7 +70,7 @@
         <el-table-column
           align="center"
           prop="handTime"
-          width="140px"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />
@@ -138,12 +137,12 @@ export default {
   },
   watch: {
     taskName(val) {
-      this.search = {
-        status: 0,
-        type: 1
-      }
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: 0,
+          type: 1
+        }
         this.getList()
       } else {
         this.search.taskName = val

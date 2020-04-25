@@ -1,7 +1,7 @@
 <template>
   <!-- 新增月计划 -->
   <div>
-    <el-table ref="tableref" :data="tableData" stripe border style="width: 100%" height="100%">
+    <el-table ref="tableref" :data="tableData" stripe border style="width: 100%">
       <el-table-column
         align="center"
         prop="wpMonth"
@@ -27,11 +27,18 @@
 </template>
 
 <script>
+import { getworkPlan } from '@/views/business/api/WorkPlan'
 export default {
   props: {
     year: {
       type: String,
       default: ''
+    },
+    form: {
+      type: Object,
+      default: () => {
+        return {}
+      }
     }
   },
   data() {
@@ -40,12 +47,27 @@ export default {
     }
   },
   created() {
-    this.initTableData()
-  },
-  mounted() {
-    console.log(this.year)
+    if (this.form.wpId === '') {
+      this.initTableData()
+    } else {
+      this.getPlan()
+    }
   },
   methods: {
+    getPlan() {
+      this.tableData = []
+      getworkPlan(this.form.taskId).then(res => {
+        const { data, code } = res
+        if (code === 200) {
+          this.tableData = data.planExpendList.map(item => {
+            return {
+              wpMonth: item.wpMonth,
+              wpMonthPlanContent: item.wpMonthPlanContent
+            }
+          })
+        }
+      })
+    },
     initTableData() {
       for (let i = 1; i < 13; i++) {
         this.tableData.push({ wpMonth: i, wpMonthPlanContent: '' })

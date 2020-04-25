@@ -44,7 +44,7 @@
         height="100%"
       >
         <el-table-column
-          align="center"
+          align="left"
           prop="dictValueTwoStr"
           width="80px"
           label="会议大类"
@@ -81,27 +81,27 @@
         <el-table-column
           align="center"
           prop="reportTime"
-          width="200"
+          width="100px"
           label="汇报时间"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
-          width="200"
+          width="100px"
           label="进展状态"
           :show-overflow-tooltip="true"
         />
         <el-table-column align="left" prop="content" label="推进情况" :show-overflow-tooltip="true" />
         <el-table-column
-          align="center"
+          align="left"
           prop="problem"
           width="200"
           label="存在问题"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
@@ -154,9 +154,6 @@ export default {
   },
   watch: {
     progress(val) {
-      this.search = {
-        type: 4
-      }
       if (val === '') {
         delete this.search.progress
       } else {
@@ -165,9 +162,6 @@ export default {
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        type: 4
-      }
       if (val === '') {
         delete this.search.taskName
       } else {

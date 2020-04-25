@@ -232,7 +232,7 @@
             <el-form-item
               label="分管领导"
             >
-              <ChoiceUser identification="type02" :setselection="setselection02" @returnData="returnData" />
+              <ChoiceUser identification="type02" flag="1" :setselection="setselection02" @returnData="returnData" />
             </el-form-item>
           </el-col>
         </el-row>

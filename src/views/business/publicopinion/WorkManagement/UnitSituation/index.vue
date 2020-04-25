@@ -143,9 +143,6 @@ export default {
   },
   watch: {
     progress(val) {
-      this.search = {
-        type: 4
-      }
       if (val === '') {
         delete this.search.progress
       } else {
@@ -154,9 +151,6 @@ export default {
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        type: 4
-      }
       if (val === '') {
         delete this.search.taskName
       } else {
@@ -164,9 +158,6 @@ export default {
       }
     },
     reportDeptName(val) {
-      this.search = {
-        type: 4
-      }
       if (val === '') {
         delete this.search.reportDeptName
       } else {

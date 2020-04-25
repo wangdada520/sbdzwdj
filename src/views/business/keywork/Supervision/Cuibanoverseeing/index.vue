@@ -114,8 +114,8 @@
     <CuiBan v-if="hackCuiBan" ref="childenCuiBan" :state="state" :form="form" @handlBtnokClick="getList" @closed="closed" />
     <!--批量催办/督办-->
     <AllCuiBan v-if="hackAllCuiBan" ref="childenAllCuiBan" :state="state" :form="multipleSelection" @handlBtnokClick="getList" @closed="closed" />
-    <!--
-    <Details v-if="hackDetails" ref="childenDetails" :form="form" @handlBtnokClick="getList" @closed="closed" />-->
+    <!--详情-->
+    <Details v-if="hackDetails" ref="childenDetails" :taskid="form.taskId" @handlBtnokClick="getList" @closed="closed" />
   </div>
 
 </template>
@@ -124,14 +124,14 @@
 import { getDBList } from '@/views/business/api/Cuibanoverseeing'
 import CuiBan from '@/views/business/keywork/Supervision/Cuibanoverseeing/model/CuiBan'
 import AllCuiBan from '@/views/business/keywork/Supervision/Cuibanoverseeing/model/AllCuiBan'
-/* import Details from '@/views/Task/Collection/model/details'*/
+import Details from '../../components/AllDetails'
 
 export default {
   name: 'Cuibanoverseeing',
   components: {
     CuiBan,
-    AllCuiBan
-    /* Details*/
+    AllCuiBan,
+    Details
   },
   data() {
     return {

@@ -48,10 +48,6 @@
         <el-table-column align="left" prop="people0" label="责任单位" :show-overflow-tooltip="true" />
         <el-table-column align="center" prop="handTime" width="140px" label="交办时间" :show-overflow-tooltip="true" />
         <el-table-column align="center" prop="endTime" width="100px" label="办结时限" :show-overflow-tooltip="true" />
-        <el-table-column align="center" prop="" width="100px" label="汇报时间" :show-overflow-tooltip="true" />
-        <el-table-column align="center" prop="" width="100px" label="进展状态" :show-overflow-tooltip="true" />
-        <el-table-column align="center" prop="" width="100px" label="推进情况" :show-overflow-tooltip="true" />
-        <el-table-column align="center" prop="" width="100px" label="存在问题" :show-overflow-tooltip="true" />
         <el-table-column align="center" prop="statusStr" width="80px" label="状态" :show-overflow-tooltip="true" />
       </el-table>
       <div class="pagination">
@@ -64,21 +60,20 @@
         />
       </div>
     </div>
-
-    <!--
-    <Details v-if="hackDetails" ref="childenDetails" :form="form" @handlBtnokClick="getList" @closed="closed" />-->
+    <!--详情-->
+    <Details v-if="hackDetails" ref="childenDetails" :taskid="form.taskId" @handlBtnokClick="getList" @closed="closed" />
   </div>
 
 </template>
 
 <script>
 import { gettaskRecordsearchList } from '@/views/business/api/JobAssignment'
-/* import Details from '@/views/Task/Collection/model/details'*/
+import Details from '../../components/AllDetails'
 
 export default {
   name: 'Workparameter',
   components: {
-    /* Details*/
+    Details
   },
   data() {
     return {

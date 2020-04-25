@@ -95,7 +95,6 @@
             />
           </template>
         </el-table-column>
-        <el-table-column align="center" prop="year" width="80px" label="预警灯" :show-overflow-tooltip="true" />
         <el-table-column align="left" prop="workNumber" width="120px" label="工作编号" :show-overflow-tooltip="true" />
         <el-table-column align="left" prop="taskName" label="工作名称" :show-overflow-tooltip="true" />
         <el-table-column align="left" prop="dictValueTwoStr" width="110px" label="来源" :show-overflow-tooltip="true" />
@@ -118,8 +117,8 @@
 
     <!--新增/编辑-->
     <Edit v-if="hackEdit" ref="childenEdit" :form="form" :title="title" @handlBtnokClick="getList" @closed="closed" />
-    <!--
-    <Details v-if="hackDetails" ref="childenDetails" :form="form" @handlBtnokClick="getList" @closed="closed" />-->
+    <!--详情-->
+    <Details v-if="hackDetails" ref="childenDetails" :taskid="form.taskId" @handlBtnokClick="getList" @closed="closed" />
   </div>
 
 </template>
@@ -127,13 +126,13 @@
 <script>
 import { getMyListtaskRecord, addsendTasktaskRecord, deletetaskRecord } from '@/views/business/api/JobAssignment'
 import Edit from '@/views/business/petitionletter/WorkManagement/JobAssignment/model/edit'
-/* import Details from '@/views/Task/Collection/model/details'*/
+import Details from '../../components/AllDetails'
 
 export default {
   name: 'JobAssignment',
   components: {
-    Edit
-    /* Details*/
+    Edit,
+    Details
   },
   data() {
     return {

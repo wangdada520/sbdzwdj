@@ -30,6 +30,7 @@
         border
         style="width: 100%"
         height="100%"
+        @row-dblclick="showdetails"
       >
         <el-table-column align="center" width="100" label="操作">
           <template slot-scope="scope">
@@ -54,15 +55,14 @@
         <el-table-column align="left" prop="taskName" label="工作名称" :show-overflow-tooltip="true" />
         <el-table-column
           align="left"
-          prop="dutieTarget"
-          width="200px"
+          prop="dbAskcontent"
           label="职责及目标内容"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="left"
           prop="people2"
-          width="200"
+          width="150px"
           label="分管领导"
           :show-overflow-tooltip="true"
         />
@@ -83,12 +83,12 @@
         <el-table-column
           align="center"
           prop="handTime"
-          width="140px"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="wpStateStr"
           width="100px"
           label="状态"
@@ -222,7 +222,16 @@ export default {
           break
       }
     },
-    showdetails() {},
+    showdetails(row) {
+      this.form = Object.assign({}, row)
+      this.form.isDetalis = true
+      this.$nextTick(() => {
+        this.hackDetails = true
+        setTimeout(() => {
+          this.$refs.childenDetails.dialogVisible = true
+        }, 0)
+      })
+    },
     handleCurrentChange(val) {
       this.pages.pageNum = val
       this.getList()

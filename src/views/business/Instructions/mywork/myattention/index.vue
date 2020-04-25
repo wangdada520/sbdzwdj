@@ -28,12 +28,11 @@
             <div>
               <el-button size="mini" class="from-serach" @click="serach">查询</el-button>
             </div>
-            <div>
-              <el-button size="mini">导出EXCEL</el-button>
-            </div>
           </div>
         </div>
-        <div />
+        <div>
+          <el-button size="mini">导出EXCEL</el-button>
+        </div>
       </div>
       <el-table
         v-loading="loading"
@@ -149,7 +148,22 @@ export default {
       Myattention(params).then((res) => {
         this.loading = false
         if (res.code === 200) {
-          this.rolesData = res.data
+          console.log(res.data)
+          this.rolesData = []
+          for (const key in res.data) {
+            const obj = {
+              workNumber: res.data[key].taskRecord.workNumber,
+              taskName: res.data[key].taskRecord.taskName,
+              people3: res.data[key].taskRecord.people3,
+              people2: res.data[key].taskRecord.people2,
+              people0: res.data[key].taskRecord.people0,
+              handTime: res.data[key].taskRecord.handTime,
+              endTime: res.data[key].taskRecord.endTime,
+              statusStr: res.data[key].taskRecord.statusStr
+            }
+            this.rolesData.push(obj)
+          }
+          // this.rolesData = res.data
           this.pages.total = res.total
         }
       }).catch(() => {

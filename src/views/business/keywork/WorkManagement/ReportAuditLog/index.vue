@@ -76,7 +76,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
           width="100px"
           label="进展状态"
@@ -90,14 +90,14 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="problem"
           width="200"
           label="存在问题"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
@@ -111,7 +111,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="beginTime"
           width="80px"
           label="是否超期"
@@ -182,6 +182,10 @@ export default {
     status(val) {
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -1,
+          type: 1
+        }
       } else {
         this.search.status = this.status
       }
@@ -190,6 +194,10 @@ export default {
     deptName(val) {
       if (val === '') {
         delete this.search.deptName
+        this.search = {
+          status: -1,
+          type: 1
+        }
       } else {
         this.search.deptName = val
       }
@@ -198,6 +206,10 @@ export default {
     taskName(val) {
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: -1,
+          type: 1
+        }
         this.getList()
       } else {
         this.search.taskName = val

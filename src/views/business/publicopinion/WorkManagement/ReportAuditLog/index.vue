@@ -181,35 +181,35 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.taskName = val
       }
     },
     reportDeptName(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.reportDeptName
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.reportDeptName = val
       }

@@ -33,4 +33,28 @@ export function getChecksByReportId(data) {
     params: data
   })
 }
+// 删除我关注的
+export function deletemyConcern(id, data) {
+  return request({
+    url: `/api-zwdj-business/concern/myConcern/${id}`,
+    method: 'delete',
+    data
+  })
+}
+// 添加我关注的
+export function addinsertMyConcern(data) {
+  return request({
+    url: `/api-zwdj-business/concern/myConcern/insertMyConcern?grade=${data.grade}&taskId=${data.taskId}`,
+    method: 'post',
+    data
+  })
+}
+// 查询单个任务是否关注
+export function getMyConcern(data) {
+  return request({
+    url: `/api-zwdj-business/concern/myConcern/getMyConcern`,
+    method: 'get',
+    params: data
+  })
+}
 

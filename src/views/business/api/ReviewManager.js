@@ -19,3 +19,20 @@ export function addVisitMan(data) {
     data
   })
 }
+
+// 获取信访记录
+export function getManageRecord(id) {
+  return request({
+    url: `/api-zwdj-business/visit/visitManageRecord/${id}`,
+    method: 'get'
+  })
+}
+
+// 修改信访记录
+export function putManageRecord(id, data) {
+  return request({
+    url: `/api-zwdj-business/visit/visitManageRecord/${id}`,
+    method: 'put',
+    data
+  })
+}

@@ -48,7 +48,7 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="beyondTypeStr"
           width="80px"
           label="预警灯"
@@ -58,7 +58,6 @@
         <el-table-column
           align="left"
           prop="dutieTarget"
-          width="150"
           label="当前节点"
           :show-overflow-tooltip="true"
         />
@@ -72,7 +71,7 @@
         <el-table-column
           align="center"
           prop="handTime"
-          width="140px"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />
@@ -98,7 +97,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="reportStatusStr"
           width="100px"
           label="状态"
@@ -123,7 +122,6 @@
 
 <script>
 import Details from './model/detalis'
-import { uniqueArr } from '@/utils/index'
 import { getTaskReportList } from '@/views/business/api/WorkReport'
 export default {
   components: {
@@ -171,32 +169,36 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: -1,
-        type: 1
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -1,
+          type: 1
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     beyondType(val) {
-      this.search = {
-        status: -1,
-        type: 1
-      }
       if (val === '') {
         delete this.search.beyondType
+        this.search = {
+          status: -1,
+          type: 1
+        }
       } else {
         this.search.beyondType = this.beyondType
       }
       this.getList()
     },
     taskName(val) {
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.taskName
+        this.search = {
+          status: -1,
+          type: 1
+        }
         this.getList()
       } else {
         this.search.taskName = val

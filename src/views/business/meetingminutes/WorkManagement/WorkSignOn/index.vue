@@ -51,20 +51,20 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="dictValueTwoStr"
-          width="80px"
+          width="150px"
           label="会议大类"
           :show-overflow-tooltip="true"
         />
-        <el-table-column align="left" prop="dictValueThreeStr" label="会议小类" :show-overflow-tooltip="true" />
         <el-table-column
           align="left"
-          prop="reportAsk"
-          width="150"
-          label="会议名称"
+          prop="dictValueThreeStr"
+          width="200px"
+          label="会议小类"
           :show-overflow-tooltip="true"
         />
+        <el-table-column align="left" prop="reportAsk" label="会议名称" :show-overflow-tooltip="true" />
         <el-table-column
           align="left"
           prop="taskName"
@@ -87,16 +87,16 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="left"
+          align="center"
           prop="endTime"
-          width="200"
+          width="100px"
           label="办结时限"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="center"
           prop="handTime"
-          width="200"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />
@@ -169,26 +169,53 @@ export default {
   },
   watch: {
     dictValueTwo(val) {
-      this.search = {
-        status: 0,
-        type: 2
-      }
+      this.options1 = []
       if (val === '') {
         delete this.search.dictValueTwo
+        this.search = {
+          status: 0,
+          type: 2
+        }
       } else {
         this.options2 = []
         this.getByDictCode(val, 'options2')
         this.search.dictValueTwo = val
       }
+      this.getByDictCode('hydl', 'options1')
       this.getList()
     },
-    taskName(val) {
-      this.search = {
-        status: 0,
-        type: 2
-      }
+    dictValueThree(val) {
       if (val === '') {
+        delete this.search.dictValueThree
+        this.search = {
+          status: 0,
+          type: 2
+        }
+      } else {
+        this.search.dictValueThree = val
+      }
+      this.getList()
+    },
+    reportAsk(val) {
+      if (val.trim() === '') {
+        delete this.search.reportAsk
+        this.search = {
+          status: 0,
+          type: 2
+        }
+        this.getList()
+      } else {
+        this.search.reportAsk = val
+      }
+    },
+    taskName(val) {
+      if (val.trim() === '') {
         delete this.search.taskName
+        this.search = {
+          status: 0,
+          type: 2
+        }
+        this.getList()
       } else {
         this.search.taskName = val
       }
@@ -255,8 +282,6 @@ export default {
         }
       })
     },
-    // 搜索
-    getSearch() {},
     handleCurrentChange(val) {
       this.pages.pageNum = val
       this.getList()

@@ -99,9 +99,11 @@ export default {
 <style scoped>
 .btn_content {
   position: relative;
-}
-.btn {
-  position: absolute;
-  left: 20px;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 }
 </style>

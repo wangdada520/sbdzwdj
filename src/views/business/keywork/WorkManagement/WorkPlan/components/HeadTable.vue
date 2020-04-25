@@ -15,7 +15,9 @@
       <div class="details-form">
         <div>
           <label>阶段工作目标内容</label>
-          <span>{{ details.dutieTarget }}</span>
+          <span>
+            <pre>{{ details.dutieTarget }}</pre>
+          </span>
         </div>
       </div>
     </div>

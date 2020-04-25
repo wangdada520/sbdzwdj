@@ -48,9 +48,9 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="dictValueTwoStr"
-          width="80px"
+          width="100px"
           label="会议大类"
           :show-overflow-tooltip="true"
         />
@@ -63,7 +63,6 @@
         <el-table-column
           align="left"
           prop="reportAsk"
-          width="150"
           label="会议名称"
           :show-overflow-tooltip="true"
         />
@@ -78,40 +77,40 @@
         <el-table-column
           align="center"
           prop="reportEndTime"
-          width="200"
+          width="100px"
           label="汇报时限"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="center"
           prop="reportTime"
-          width="200"
+          width="100px"
           label="汇报时间"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="left"
           prop="progressStr"
-          width="200"
+          width="100px"
           label="进展状态"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="content"
-          width="200"
+          width="100px"
           label="推进情况"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="problem"
           width="200"
           label="存在问题"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
@@ -176,7 +175,53 @@ export default {
       hackDetails: false
     }
   },
-  watch: {},
+  watch: {
+    status(val) {
+      if (val === '') {
+        delete this.search.status
+        this.search = {
+          status: 0,
+          type: 2
+        }
+      } else {
+        this.search.status = val
+      }
+      this.getList()
+    },
+    reportAsk(val) {
+      if (val.trim() === '') {
+        delete this.search.reportAsk
+        this.search = {
+          status: 0,
+          type: 2
+        }
+      } else {
+        this.search.reportAsk = val
+      }
+    },
+    taskName(val) {
+      if (val.trim() === '') {
+        delete this.search.taskName
+        this.search = {
+          status: 0,
+          type: 2
+        }
+      } else {
+        this.search.taskName = val
+      }
+    },
+    reportDeptName(val) {
+      if (val.trim() === '') {
+        delete this.search.reportDeptName
+        this.search = {
+          status: 0,
+          type: 2
+        }
+      } else {
+        this.search.reportDeptName = val
+      }
+    }
+  },
   created() {
     this.getList()
   },

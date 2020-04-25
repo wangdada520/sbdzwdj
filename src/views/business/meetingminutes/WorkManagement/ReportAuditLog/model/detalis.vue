@@ -23,7 +23,7 @@
         :operation-id="form.reportId"
         @percent="setPercent"
       >
-        <AuditTableTwo :check-id="form.checkId" />
+        <AuditTable :id="form.checkId" id-name="checkId" />
       </ReportTable>
     </el-dialog>
   </div>
@@ -32,13 +32,13 @@
 <script>
 import TableHeader from '@/views/business/meetingminutes/components/TableHeader'
 import ReportTable from '@/views/business/meetingminutes/components/ReportTable'
-import AuditTableTwo from '@/views/business/components/Audit/AuditTableTwo'
+import AuditTable from '@/views/business/components/Audit/AuditTable'
 import { getTaskCheck } from '@/views/business/api/ReportAudit'
 export default {
   components: {
     TableHeader,
     ReportTable,
-    AuditTableTwo
+    AuditTable
   },
   props: {
     title: {

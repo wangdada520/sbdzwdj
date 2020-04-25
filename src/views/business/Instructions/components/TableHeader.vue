@@ -15,7 +15,9 @@
       <div class="details-form">
         <div>
           <label>工作目标内容</label>
-          <span>{{ details.taskContent }}</span>
+          <span>
+            <pre>{{ details.taskContent }}</pre>
+          </span>
         </div>
       </div>
       <div class="details-form">

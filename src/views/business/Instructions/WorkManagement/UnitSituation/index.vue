@@ -157,33 +157,33 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        type: 0
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          type: 0
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     deptName(val) {
-      this.search = {
-        type: 0
-      }
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.deptName
+        this.search = {
+          type: 0
+        }
         this.getList()
       } else {
         this.search.deptName = val
       }
     },
     taskName(val) {
-      this.search = {
-        type: 0
-      }
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.taskName
+        this.search = {
+          type: 0
+        }
         this.getList()
       } else {
         this.search.taskName = val

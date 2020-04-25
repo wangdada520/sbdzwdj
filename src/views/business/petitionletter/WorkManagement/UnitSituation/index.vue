@@ -41,9 +41,9 @@
         height="100%"
       >
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
-          width="80px"
+          width="100px"
           label="工作编号"
           :show-overflow-tooltip="true"
         />
@@ -64,34 +64,34 @@
         <el-table-column
           align="left"
           prop="reportEndTime"
-          width="200"
+          width="100px"
           label="汇报时限"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="center"
           prop="reportTime"
-          width="200"
+          width="100px"
           label="汇报时间"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
-          width="200"
+          width="150px"
           label="进展状态"
           :show-overflow-tooltip="true"
         />
         <el-table-column align="left" prop="content" label="推进情况" :show-overflow-tooltip="true" />
         <el-table-column
-          align="center"
+          align="left"
           prop="problem"
           width="200"
           label="存在问题"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
@@ -198,7 +198,6 @@ export default {
     cx() {
       this.$refs.searchDetails.dialogVisible = true
     },
-    serachFn() {},
     handleCurrentChange(val) {
       this.pages.pageNum = val
       this.getList()

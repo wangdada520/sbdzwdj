@@ -79,13 +79,12 @@
             />
           </template>
         </el-table-column>
-        <el-table-column align="center" prop="year" width="80px" label="预警灯" :show-overflow-tooltip="true" />
-        <el-table-column align="left" prop="dictValueOneStr" width="120px" label="会议大类" :show-overflow-tooltip="true" />
-        <el-table-column align="left" prop="dictValueTwoStr" width="120px" label="会议小类" :show-overflow-tooltip="true" />
-        <el-table-column align="left" prop="meetName" label="会议名称" :show-overflow-tooltip="true" />
-        <el-table-column align="left" prop="meetNumber" width="110px" label="发文字号" :show-overflow-tooltip="true" />
-        <el-table-column align="left" prop="people0" label="会议召开人" :show-overflow-tooltip="true" />
-        <el-table-column align="center" prop="beginTime" width="110px" label="会议召开日期" :show-overflow-tooltip="true" />
+        <el-table-column align="left" prop="meeting.dictValueOneStr" width="120px" label="会议大类" :show-overflow-tooltip="true" />
+        <el-table-column align="left" prop="meeting.dictValueTwoStr" width="120px" label="会议小类" :show-overflow-tooltip="true" />
+        <el-table-column align="left" prop="meeting.meetName" label="会议名称" :show-overflow-tooltip="true" />
+        <el-table-column align="left" prop="meeting.meetNumber" width="110px" label="发文字号" :show-overflow-tooltip="true" />
+        <el-table-column align="left" prop="meeting.people4" label="会议召开人" :show-overflow-tooltip="true" />
+        <el-table-column align="center" prop="meeting.beginTime" width="110px" label="会议召开日期" :show-overflow-tooltip="true" />
       </el-table>
       <div class="pagination">
         <pagination
@@ -100,8 +99,8 @@
 
     <!--新增/编辑-->
     <Edit v-if="hackEdit" ref="childenEdit" :form="form" :title="title" @handlBtnokClick="getList" @closed="closed" />
-    <!--
-    <Details v-if="hackDetails" ref="childenDetails" :form="form" @handlBtnokClick="getList" @closed="closed" />-->
+    <!--详情-->
+    <Details v-if="hackDetails" ref="childenDetails" :form="form" @handlBtnokClick="getList" @closed="closed" />
   </div>
 
 </template>
@@ -109,13 +108,13 @@
 <script>
 import { gettaskMeetinglist, deletetaskMeeting } from '@/views/business/api/ManagementMeetings'
 import Edit from '@/views/business/meetingminutes/WorkManagement/ManagementMeetings/model/edit'
-/* import Details from '@/views/Task/Collection/model/details'*/
+import Details from './model/details'
 
 export default {
   name: 'ManagementMeetings',
   components: {
-    Edit
-    /* Details*/
+    Edit,
+    Details
   },
   data() {
     return {
@@ -246,11 +245,9 @@ export default {
      * 按钮操作
      * */
     handleEdit(row, type) {
-      this.form = Object.assign({}, row)
       switch (type) {
-        case 'allocation':
-          break
         case 'add':
+          this.form = {}
           this.title = '新增'
           this.hackEdit = true
           this.$nextTick(() => {
@@ -258,6 +255,7 @@ export default {
           })
           break
         case 'edit':
+          this.form = Object.assign({}, row.meeting)
           this.title = '编辑'
           this.hackEdit = true
           this.$nextTick(() => {
@@ -265,7 +263,7 @@ export default {
           })
           break
         case 'delete':
-          this.handleDelete(row.meetId)
+          this.handleDelete(row.meeting.meetId)
           break
         default:
           return false
@@ -275,7 +273,7 @@ export default {
      * 打开详情
      * */
     rowdblClick(row) {
-      this.form = Object.assign({}, row)
+      this.form = Object.assign({}, row.meeting)
       this.$nextTick(() => {
         this.hackDetails = true
         setTimeout(() => {

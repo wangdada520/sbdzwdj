@@ -24,9 +24,13 @@
         </div>
       </el-dialog>
       <div slot="footer" class="dialog-footer btn_content">
-        <el-button class="btn">打印签收单</el-button>
-        <el-button type="danger" @click="innerVisible = true">拒签</el-button>
-        <el-button @click="signOk(1)">签收</el-button>
+        <div>
+          <!-- <el-button class="btn">打印签收单</el-button> -->
+        </div>
+        <div>
+          <el-button type="danger" @click="innerVisible = true">拒签</el-button>
+          <el-button type="primary" @click="signOk(1)">签收</el-button>
+        </div>
       </div>
     </el-dialog>
   </div>
@@ -128,9 +132,11 @@ export default {
 <style scoped>
 .btn_content {
   position: relative;
-}
-.btn {
-  position: absolute;
-  left: 20px;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 }
 </style>

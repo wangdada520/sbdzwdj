@@ -15,19 +15,25 @@
       <div class="details-form">
         <div>
           <label>会议名称</label>
-          <span>{{ details.reportAsk }}</span>
+          <span>
+            <pre>{{ details.reportAsk }}</pre>
+          </span>
         </div>
       </div>
       <div class="details-form">
         <div>
           <label>工作目标内容</label>
-          <span>{{ details.taskContent }}</span>
+          <span>
+            <pre>{{ details.taskContent }}</pre>
+          </span>
         </div>
       </div>
       <div class="details-form">
         <div>
           <label>督办要求</label>
-          <span>{{ details.dbAskcontent }}</span>
+          <span>
+            <pre>{{ details.dbAskcontent }}</pre>
+          </span>
         </div>
       </div>
     </div>

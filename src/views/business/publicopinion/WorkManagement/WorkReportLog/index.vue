@@ -208,47 +208,47 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: -2,
-        type: 4
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -2,
+          type: 4
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     dictValueTwo(val) {
-      this.search = {
-        status: -2,
-        type: 4
-      }
       if (val === '') {
         delete this.search.people3
+        this.search = {
+          status: -2,
+          type: 4
+        }
       } else {
         this.search.people3 = val
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: -2,
-        type: 4
-      }
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: -2,
+          type: 4
+        }
       } else {
         this.search.taskName = val
       }
     },
     reportTime(val) {
-      this.search = {
-        status: -2,
-        type: 4
-      }
       if (val === '') {
         delete this.search.reportTime
+        this.search = {
+          status: -2,
+          type: 4
+        }
       } else {
         this.search.reportTime = val
       }

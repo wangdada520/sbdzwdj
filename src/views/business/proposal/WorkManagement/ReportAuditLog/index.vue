@@ -216,6 +216,10 @@ export default {
     status(val) {
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -1,
+          type: 5
+        }
       } else {
         this.search.status = this.status
       }
@@ -224,6 +228,10 @@ export default {
     people3(val) {
       if (val === '') {
         delete this.search.people3
+        this.search = {
+          status: -1,
+          type: 5
+        }
       } else {
         this.search.people3 = val
       }
@@ -232,6 +240,10 @@ export default {
     taskName(val) {
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: -1,
+          type: 5
+        }
         this.getList()
       } else {
         this.search.taskName = val

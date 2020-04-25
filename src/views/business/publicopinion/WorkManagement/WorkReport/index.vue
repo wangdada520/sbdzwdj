@@ -196,48 +196,48 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     beyondType(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.beyondType
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.beyondType = this.beyondType
       }
       this.getList()
     },
     dictValueTwo(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.dictValueTwo
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.dictValueTwo = val
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.taskName = val
       }

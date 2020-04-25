@@ -9,3 +9,20 @@ export function getRecordList(data) {
     params: data
   })
 }
+
+// 获取信访记录
+export function getManageRecord(id) {
+  return request({
+    url: `/api-zwdj-business/visit/visitManageRecord/${id}`,
+    method: 'get'
+  })
+}
+
+// 添加信访记录
+export function addVisitMan(data) {
+  return request({
+    url: `/api-zwdj-business/visit/visitManageRecord`,
+    method: 'post',
+    data
+  })
+}

@@ -46,21 +46,19 @@
         <el-table-column
           align="left"
           prop="taskName"
-          width="150"
           label="工作名称"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="left"
           prop="dutieTarget"
-          width="200"
           label="当前节点"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="left"
           prop="deptName"
-          width="200"
+          width="150px"
           label="交办单位"
           :show-overflow-tooltip="true"
         />
@@ -86,29 +84,29 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
           width="150"
           label="进展状态"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="content"
           width="200"
           label="推进情况"
           :show-overflow-tooltip="true"
         />
-        <el-table-column align="center" prop="problem" label="存在问题" :show-overflow-tooltip="true" />
+        <el-table-column align="left" prop="problem" label="存在问题" :show-overflow-tooltip="true" />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="reportStatusStr"
           width="100px"
           label="状态"
@@ -186,24 +184,24 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: -2,
-        type: 1
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -2,
+          type: 1
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: -2,
-        type: 1
-      }
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: -2,
+          type: 1
+        }
         this.getList()
       } else {
         this.search.taskName = val

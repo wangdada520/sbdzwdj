@@ -1,5 +1,5 @@
 <template>
-  <!-- 汇报审核记录首页 -->
+  <!-- 会议纪要-汇报审核记录首页 -->
   <div class="content">
     <div class="global_table_box">
       <div class="from-serach">
@@ -45,9 +45,9 @@
         @row-dblclick="showdetails"
       >
         <el-table-column
-          align="center"
+          align="left"
           prop="dictValueTwoStr"
-          width="80px"
+          width="150px"
           label="会议大类"
           :show-overflow-tooltip="true"
         />
@@ -64,13 +64,7 @@
           label="会议名称"
           :show-overflow-tooltip="true"
         />
-        <el-table-column
-          align="left"
-          prop="taskName"
-          width="150"
-          label="工作名称"
-          :show-overflow-tooltip="true"
-        />
+        <el-table-column align="left" prop="taskName" label="工作名称" :show-overflow-tooltip="true" />
         <el-table-column
           align="left"
           prop="workMoney"
@@ -79,23 +73,23 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="left"
+          align="center"
           prop="reportEndTime"
-          width="200"
+          width="100px"
           label="汇报时限"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="center"
           prop="reportTime"
-          width="200"
+          width="100px"
           label="汇报时间"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
-          width="200"
+          width="100px"
           label="进展状态"
           :show-overflow-tooltip="true"
         />
@@ -107,14 +101,14 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="problem"
           width="200"
           label="存在问题"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
@@ -123,14 +117,14 @@
         <el-table-column
           align="center"
           prop="beginTime"
-          width="200"
+          width="100px"
           label="审核时间"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="beginTime"
-          width="200"
+          width="100px"
           label="是否超期"
           :show-overflow-tooltip="true"
         />
@@ -198,35 +192,35 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.taskName = val
       }
     },
     reportDeptName(val) {
-      this.search = {
-        status: -1,
-        type: 4
-      }
       if (val === '') {
         delete this.search.reportDeptName
+        this.search = {
+          status: -1,
+          type: 4
+        }
       } else {
         this.search.reportDeptName = val
       }

@@ -38,7 +38,7 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
           width="80px"
           label="工作编号"
@@ -76,7 +76,7 @@
         <el-table-column
           align="center"
           prop="handTime"
-          width="140px"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />
@@ -147,12 +147,12 @@ export default {
   watch: {
     // 批示领导
     people3(val) {
-      this.search = {
-        status: 0,
-        type: 0
-      }
       if (val === '') {
         delete this.search.people3
+        this.search = {
+          status: 0,
+          type: 0
+        }
       } else {
         this.search.people3 = val
       }
@@ -160,12 +160,12 @@ export default {
     },
     // 工作名称
     taskName(val) {
-      this.search = {
-        status: 0,
-        type: 0
-      }
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.taskName
+        this.search = {
+          status: 0,
+          type: 0
+        }
         this.getList()
       } else {
         this.search.taskName = val

@@ -54,16 +54,16 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
-          width="80px"
+          width="100px"
           label="工作编号"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="left"
           prop="taskName"
-          width="150"
+          width="200px"
           label="工作名称"
           :show-overflow-tooltip="true"
         />
@@ -77,7 +77,7 @@
         <el-table-column
           align="center"
           prop="handTime"
-          width="140px"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />
@@ -96,7 +96,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
           width="100px"
           label="进展状态"
@@ -118,7 +118,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="reportStatusStr"
           width="100px"
           label="状态"
@@ -200,36 +200,36 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: -2,
-        type: 0
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -2,
+          type: 0
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     people3(val) {
-      this.search = {
-        status: -2,
-        type: 0
-      }
       if (val === '') {
         delete this.search.people3
+        this.search = {
+          status: -2,
+          type: 0
+        }
       } else {
         this.search.people3 = val
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: -2,
-        type: 0
-      }
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.taskName
+        this.search = {
+          status: -2,
+          type: 0
+        }
         this.getList()
       } else {
         this.search.taskName = val

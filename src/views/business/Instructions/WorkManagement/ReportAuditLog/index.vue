@@ -42,9 +42,9 @@
         @row-dblclick="showdetails"
       >
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
-          width="80px"
+          width="100px"
           label="工作编号"
           :show-overflow-tooltip="true"
         />
@@ -77,7 +77,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
           width="100px"
           label="进展状态"
@@ -106,7 +106,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="beginTime"
           width="80px"
           label="是否超期"
@@ -175,36 +175,36 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: -1,
-        type: 0
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: -1,
+          type: 0
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     deptName(val) {
-      this.search = {
-        status: -1,
-        type: 0
-      }
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.deptName
+        this.search = {
+          status: -1,
+          type: 0
+        }
         this.getList()
       } else {
         this.search.deptName = val
       }
     },
     taskName(val) {
-      this.search = {
-        status: -1,
-        type: 0
-      }
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.taskName
+        this.search = {
+          status: -1,
+          type: 0
+        }
         this.getList()
       } else {
         this.search.taskName = val

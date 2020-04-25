@@ -1,7 +1,7 @@
 <template>
   <!-- 新增周计划 -->
   <div>
-    <el-table ref="tableref" :data="tableData" stripe border style="width: 100%" height="100%">
+    <el-table ref="tableref" :data="tableData" stripe border style="width: 100%">
       <el-table-column
         align="center"
         prop="wpMonth"
@@ -66,11 +66,18 @@
 </template>
 
 <script>
+import { getworkPlan } from '@/views/business/api/WorkPlan'
 export default {
   props: {
     year: {
       type: String,
       default: ''
+    },
+    form: {
+      type: Object,
+      default: () => {
+        return {}
+      }
     }
   },
   data() {
@@ -79,16 +86,45 @@ export default {
     }
   },
   created() {
-    this.initTableData()
-  },
-  mounted() {
-    console.log(this.year)
+    if (this.form.wpId === '') {
+      this.initTableData()
+    } else {
+      this.getPlan()
+    }
   },
   methods: {
+    // 获取计划
+    getPlan() {
+      console.log(111)
+
+      this.tableData = []
+      getworkPlan(this.form.taskId).then(res => {
+        const { data, code } = res
+        if (code === 200) {
+          this.tableData = data.planExpendList.map(item => {
+            return {
+              wpMonth: `${this.year}${item.wpMonth}月`,
+              wpWeekContentOne: item.wpWeekContentOne,
+              wpWeekContentTwo: item.wpWeekContentTwo,
+              wpWeekContentThree: item.wpWeekContentThree,
+              wpWeekContentFour: item.wpWeekContentFour
+            }
+          })
+        }
+      })
+    },
     initTableData() {
+      console.log(222)
+
+      this.tableData = []
       for (let i = 1; i < 13; i++) {
-        const str = `${this.year}${i}月`
-        this.tableData.push({ wpMonth: str, wpWeekContentOne: '', wpWeekContentTwo: '', wpWeekContentThree: '', wpWeekContentFour: '' })
+        this.tableData.push({
+          wpMonth: `${this.year}${i}月`,
+          wpWeekContentOne: '',
+          wpWeekContentTwo: '',
+          wpWeekContentThree: '',
+          wpWeekContentFour: ''
+        })
       }
     }
   }

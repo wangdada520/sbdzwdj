@@ -5,7 +5,7 @@
       <div class="from-serach">
         <div class="serach">
           <div>
-            <el-select v-model="status" size="mini" placeholder="请选择状态">
+            <el-select v-model="status" size="mini" placeholder="请选择状态" clearable>
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -45,9 +45,9 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
-          width="80px"
+          width="100px"
           label="工作编号"
           :show-overflow-tooltip="true"
         />
@@ -74,7 +74,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
           width="100px"
           label="进展状态"
@@ -107,7 +107,7 @@
         />
       </div>
     </div>
-    <Details v-if="hackDetails" ref="childenDetails" :form="form" title="审核汇报详情" @closed="closed" />
+    <Details v-if="hackDetails" ref="childenDetails" :form="form" title="汇报审核详情" @closed="closed" />
   </div>
 </template>
 
@@ -155,36 +155,36 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: 0,
-        type: 0
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: 0,
+          type: 0
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: 0,
-        type: 0
-      }
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.taskName
+        this.search = {
+          status: 0,
+          type: 0
+        }
         this.getList()
       } else {
         this.search.taskName = val
       }
     },
     deptName(val) {
-      this.search = {
-        status: 0,
-        type: 0
-      }
-      if (val === '') {
+      if (val.trim() === '') {
         delete this.search.deptName
+        this.search = {
+          status: 0,
+          type: 0
+        }
         this.getList()
       } else {
         this.search.deptName = val

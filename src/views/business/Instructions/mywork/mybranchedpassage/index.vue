@@ -28,12 +28,11 @@
             <div>
               <el-button size="mini" class="from-serach" @click="serach">查询</el-button>
             </div>
-            <div>
-              <el-button size="mini" @click="ExportData">导出EXCEL</el-button>
-            </div>
           </div>
         </div>
-        <div />
+        <div>
+          <el-button size="mini" @click="ExportData">导出EXCEL</el-button>
+        </div>
       </div>
       <el-table
         v-loading="loading"

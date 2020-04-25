@@ -26,7 +26,7 @@
       </el-dialog>
       <div slot="footer" class="dialog-footer btn_content">
         <div>
-          <el-button>打印签收单</el-button>
+          <!-- <el-button>打印签收单</el-button> -->
         </div>
         <div>
           <el-button type="danger" @click="innerVisible = true">拒签</el-button>

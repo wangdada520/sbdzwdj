@@ -57,19 +57,13 @@
           </template>
         </el-table-column>
         <el-table-column
-          align="center"
+          align="left"
           prop="workNumber"
-          width="80px"
+          width="100px"
           label="工作编号"
           :show-overflow-tooltip="true"
         />
-        <el-table-column
-          align="left"
-          prop="taskName"
-          width="150"
-          label="工作名称"
-          :show-overflow-tooltip="true"
-        />
+        <el-table-column align="left" prop="taskName" label="工作名称" :show-overflow-tooltip="true" />
         <el-table-column
           align="left"
           prop="deptName"
@@ -78,23 +72,23 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="left"
+          align="center"
           prop="handTime"
-          width="200"
+          width="100px"
           label="交办时间"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="center"
           prop="reportEndTime"
-          width="200"
+          width="100"
           label="汇报时限"
           :show-overflow-tooltip="true"
         />
         <el-table-column
           align="center"
           prop="reportTime"
-          width="200"
+          width="100"
           label="汇报时间"
           :show-overflow-tooltip="true"
         />
@@ -106,24 +100,24 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="content"
           width="200"
           label="推进情况"
           :show-overflow-tooltip="true"
         />
-        <el-table-column align="center" prop="problem" label="存在问题" :show-overflow-tooltip="true" />
+        <el-table-column align="left" prop="problem" label="存在问题" :show-overflow-tooltip="true" />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="reportStatusStr"
-          width="200"
+          width="100px"
           label="状态"
           :show-overflow-tooltip="true"
         />

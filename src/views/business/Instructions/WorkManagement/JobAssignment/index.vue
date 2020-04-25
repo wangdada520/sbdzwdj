@@ -95,7 +95,6 @@
             />
           </template>
         </el-table-column>
-        <el-table-column align="center" prop="year" width="80px" label="预警灯" :show-overflow-tooltip="true" />
         <el-table-column align="left" prop="workNumber" width="120px" label="工作编号" :show-overflow-tooltip="true" />
         <el-table-column align="left" prop="taskName" label="工作名称" :show-overflow-tooltip="true" />
         <el-table-column align="left" prop="people3" width="110px" label="批示领导" :show-overflow-tooltip="true" />

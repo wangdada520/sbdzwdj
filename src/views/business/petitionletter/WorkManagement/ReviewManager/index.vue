@@ -40,7 +40,23 @@
       >
         <el-table-column align="center" width="100" label="操作">
           <template slot-scope="scope">
-            <EditDeletOpetionNew :scope="scope" :menulist="menulist" @handleEdit="handleEdit" />
+            <EditDeletOpetionNew
+              :scope="scope"
+              :menulist="[
+                {
+                  name: '新增回访',
+                  icon: 'el-icon-document',
+                  type: 'add',
+                  ishow: scope.row.isState === 0 ? true :false
+                },
+                {
+                  name: '编辑回访',
+                  icon: 'el-icon-edit',
+                  type: 'edit',
+                  ishow: scope.row.isState === 1 ? true :false
+                }]"
+              @handleEdit="handleEdit"
+            />
           </template>
         </el-table-column>
         <el-table-column
@@ -50,12 +66,7 @@
           label="工作编号"
           :show-overflow-tooltip="true"
         />
-        <el-table-column
-          align="left"
-          prop="taskName"
-          label="工作名称"
-          :show-overflow-tooltip="true"
-        />
+        <el-table-column align="left" prop="taskName" label="工作名称" :show-overflow-tooltip="true" />
         <el-table-column
           align="left"
           prop="workMoney"
@@ -65,7 +76,7 @@
         />
         <el-table-column
           align="left"
-          prop="deptName"
+          prop="vlmDeptName"
           width="200"
           label="办理单位"
           :show-overflow-tooltip="true"
@@ -73,7 +84,7 @@
         <el-table-column
           align="center"
           prop="reportTime"
-          width="200"
+          width="100px"
           label="办理时限"
           :show-overflow-tooltip="true"
         />
@@ -94,7 +105,7 @@
         <el-table-column
           align="center"
           prop="isStateStr"
-          width="200"
+          width="100px"
           label="回访状态"
           :show-overflow-tooltip="true"
         />
@@ -109,7 +120,13 @@
           @handleSizeChange="handleSizeChange"
         />
       </div>
-      <Details v-if="hackDetails" ref="childenDetails" :form="form" title="回访管理" @closed="closed" />
+      <Details
+        v-if="hackDetails"
+        ref="childenDetails"
+        :form="form"
+        :title="title"
+        @closed="closed"
+      />
     </div>
   </div>
 </template>
@@ -139,19 +156,60 @@ export default {
         total: 0
       },
       search: {
-        type: 3
+        type: 4
       },
       tableData: [],
       menulist: [
         {
-          name: '汇报',
+          name: '新增回访',
           icon: 'el-icon-document',
+          type: 'add',
+          ishow: true
+        },
+        {
+          name: '编辑回访',
+          icon: 'el-icon-edit',
           type: 'edit',
           ishow: true
         }
       ],
+      title: '',
       hackDetails: false,
       form: {}
+    }
+  },
+  watch: {
+    isState(val) {
+      if (val === '') {
+        delete this.search.isState
+      } else {
+        this.search.isState = this.isState
+      }
+      this.getList()
+    },
+    vlmVisitor(val) {
+      if (val.trim() === '') {
+        delete this.search.vlmVisitor
+        this.getList()
+      } else {
+        this.search.vlmVisitor = this.vlmVisitor
+      }
+    },
+    taskName(val) {
+      if (val.trim() === '') {
+        delete this.search.taskName
+        this.getList()
+      } else {
+        this.search.taskName = this.taskName
+      }
+    },
+    vlmDeptName(val) {
+      if (val.trim() === '') {
+        delete this.search.vlmDeptName
+        this.getList()
+      } else {
+        this.search.vlmDeptName = this.vlmDeptName
+      }
     }
   },
   created() {
@@ -187,8 +245,19 @@ export default {
         }, 0)
       })
     },
-    handleEdit(row) {
-      this.showdetails(row)
+    handleEdit(row, type) {
+      console.log(type)
+      // console.log(row)
+      switch (type) {
+        case 'add':
+          this.title = '新增'
+          this.showdetails(row)
+          break
+        case 'edit':
+          this.title = '编辑'
+          this.showdetails(row)
+          break
+      }
     },
     handleCurrentChange(val) {
       this.pages.pageNum = val

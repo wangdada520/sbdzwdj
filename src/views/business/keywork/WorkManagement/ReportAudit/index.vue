@@ -48,7 +48,6 @@
         <el-table-column
           align="left"
           prop="dutieTarget"
-          width="200"
           label="当前节点"
           :show-overflow-tooltip="true"
         />
@@ -74,7 +73,7 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="progressStr"
           width="150px"
           label="进展状态"
@@ -88,14 +87,14 @@
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="problem"
           width="200"
           label="存在问题"
           :show-overflow-tooltip="true"
         />
         <el-table-column
-          align="center"
+          align="left"
           prop="plan"
           width="200"
           label="下步计划"
@@ -161,36 +160,36 @@ export default {
   },
   watch: {
     status(val) {
-      this.search = {
-        status: 0,
-        type: 1
-      }
       if (val === '') {
         delete this.search.status
+        this.search = {
+          status: 0,
+          type: 1
+        }
       } else {
         this.search.status = this.status
       }
       this.getList()
     },
     taskName(val) {
-      this.search = {
-        status: 0,
-        type: 1
-      }
       if (val === '') {
         delete this.search.taskName
+        this.search = {
+          status: 0,
+          type: 1
+        }
         this.getList()
       } else {
         this.search.taskName = val
       }
     },
     deptName(val) {
-      this.search = {
-        status: 0,
-        type: 1
-      }
       if (val === '') {
         delete this.search.deptName
+        this.search = {
+          status: 0,
+          type: 1
+        }
         this.getList()
       } else {
         this.search.deptName = val
